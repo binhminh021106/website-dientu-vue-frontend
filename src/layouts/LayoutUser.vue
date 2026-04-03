@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <!-- Gọi component Header -->
+  <div class="d-flex flex-column min-vh-100 bg-white">
+    <!-- Header -->
     <ClientHeader />
 
-    <!-- Nơi chứa nội dung các trang con (Trang chủ, Chi tiết SP...) -->
-    <main style="min-height: 80vh;">
+    <!-- Main Content -->
+    <main class="flex-grow-1">
       <RouterView />
     </main>
 
-    <!-- Gọi component Footer -->
+    <!-- Footer -->
     <ClientFooter />
   </div>
 </template>
@@ -18,3 +18,12 @@ import { RouterView } from 'vue-router'
 import ClientHeader from '../components/client/Header.vue'
 import ClientFooter from '../components/client/Footer.vue'
 </script>
+
+<style>
+/* Reset cơ bản cho toàn trang client */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+</style>
