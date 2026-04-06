@@ -1,20 +1,25 @@
 const userRoutes = [
   {
-    path: '/',
-    component: () => import('../layouts/LayoutUser.vue'), 
+    path: "/",
+    component: () => import("../layouts/LayoutUser.vue"),
     children: [
       {
-        path: '', 
-        name: 'home',
-        component: () => import('../views/client/index.vue')
+        path: "",
+        name: "home",
+        component: () => import("../views/client/Index.vue"),
       },
-      // {
-      //   path: 'product/:id',
-      //   name: 'product-detail',
-      //   component: () => import('../views/user/ProductDetail.vue')
-      // }
-    ]
-  }
-]
+      {
+        path: "register",
+        name: "register",
+        component: () => import("../views/client/auth/Register.vue"),
+      },
+      {
+        path: "login",
+        name: "login",
+        component: () => import("../views/client/auth/Login.vue"),
+      },
+    ],
+  },
+];
 
-export default userRoutes
+export default userRoutes;
