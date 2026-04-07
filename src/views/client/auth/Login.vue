@@ -89,7 +89,7 @@
 
                 <div class="text-center mt-4 pt-2 border-top">
                   <span class="text-muted" style="font-size: 0.95rem;">Chưa có tài khoản? </span>
-                  <RouterLink to="/register" class="text-decoration-none fw-medium hover-brand" style="color: #d84727;">Đăng ký ngay</RouterLink>
+                  <RouterLink :to="{name: 'register'}" class="text-decoration-none fw-medium hover-brand" style="color: #d84727;">Đăng ký ngay</RouterLink>
                 </div>
 
               </div>

@@ -242,32 +242,44 @@ const news = ref([
 const ProductCard = {
   props: ['product'],
   template: `
-    <div class="card border border-light h-100 product-card rounded-0 group-hover bg-white cursor-pointer position-relative">
+    <div class="card border-0 h-100 product-card rounded-0 group-hover bg-white cursor-pointer position-relative">
       
-      <!-- Badges -->
-      <div class="position-absolute top-0 start-0 m-2 z-2 d-flex flex-column gap-1">
-        <span v-if="product.badge" class="badge bg-brand rounded-0 px-2 py-1 fw-bold">{{ product.badge }}</span>
-        <span v-if="product.isNew" class="badge bg-success rounded-0 px-2 py-1 fw-bold">MỚI</span>
-      </div>
+      <div class="position-relative overflow-hidden bg-light" style="height: 250px;">
+        <!-- Badges (Top Left) -->
+        <div v-if="product.badge" class="position-absolute top-0 start-0 z-2">
+          <span class="badge bg-brand text-white fw-bold px-3 py-2 shadow-sm" style="border-bottom-right-radius: 10px; border-top-left-radius: 0; font-size: 0.85rem;">{{ product.badge }}</span>
+        </div>
+        <div v-else-if="product.isNew" class="position-absolute top-0 start-0 z-2">
+          <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm" style="border-bottom-right-radius: 10px; border-top-left-radius: 0; font-size: 0.85rem;">MỚI</span>
+        </div>
 
-      <!-- Actions (Cart) -->
-      <div class="product-actions position-absolute z-2 bg-white border d-flex align-items-center justify-content-center shadow-sm">
-         <i class="fa-solid fa-cart-shopping text-dark"></i>
-      </div>
+        <!-- Wishlist Button (Top Right) -->
+        <div class="position-absolute top-0 end-0 z-2 bg-brand text-white d-flex align-items-center justify-content-center wishlist-btn shadow-sm" style="width: 42px; height: 42px; border-bottom-left-radius: 10px;">
+          <i class="fa-regular fa-heart fs-5"></i>
+        </div>
 
-      <!-- Image -->
-      <div class="overflow-hidden bg-light" style="height: 220px;">
+        <!-- Actions (Cart & Quickview - Bottom Right) -->
+        <div class="product-actions position-absolute z-2 d-flex flex-column gap-2">
+           <button class="btn bg-white text-dark shadow-sm rounded-2 d-flex align-items-center justify-content-center action-btn" style="width: 42px; height: 42px;" title="Thêm vào giỏ">
+             <i class="fa-solid fa-bag-shopping fs-5"></i>
+           </button>
+           <button class="btn bg-white text-dark shadow-sm rounded-2 d-flex align-items-center justify-content-center action-btn" style="width: 42px; height: 42px;" title="Xem nhanh">
+             <i class="fa-regular fa-eye fs-5"></i>
+           </button>
+        </div>
+
+        <!-- Image Placeholder -->
         <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted transition-transform img-wrapper">
-           <span class="small"></span>
+           <span class="small">[Ảnh {{ product.imageAlt }}]</span>
         </div>
       </div>
       
       <!-- Info -->
-      <div class="card-body d-flex flex-column p-3">
-        <h6 class="card-title text-truncate-2 mb-2 text-dark fw-medium hover-brand" style="font-size: 0.95rem; line-height: 1.4;">{{ product.name }}</h6>
+      <div class="card-body d-flex flex-column px-0 py-3">
+        <h6 class="card-title text-truncate-2 mb-2 text-dark fw-bold hover-brand" style="font-size: 0.95rem; line-height: 1.4;">{{ product.name }}</h6>
         <div class="mt-auto">
           <div class="d-flex align-items-center flex-wrap gap-2">
-            <span class="fw-bold text-brand fs-6">{{ product.price.toLocaleString('vi-VN') }}đ</span>
+            <span class="fw-bold fs-6" style="color: #e32727;">{{ product.price.toLocaleString('vi-VN') }}đ</span>
             <span v-if="product.oldPrice" class="text-muted text-decoration-line-through small">{{ product.oldPrice.toLocaleString('vi-VN') }}đ</span>
           </div>
         </div>
@@ -284,24 +296,44 @@ export default {
     ProductCard: {
       props: ['product'],
       template: `
-        <div class="card border border-light h-100 product-card rounded-0 group-hover bg-white cursor-pointer position-relative">
-          <div class="position-absolute top-0 start-0 m-2 z-2 d-flex flex-column gap-1">
-            <span v-if="product.badge" class="badge bg-brand rounded-0 px-2 py-1 fw-bold">{{ product.badge }}</span>
-            <span v-if="product.isNew" class="badge bg-success rounded-0 px-2 py-1 fw-bold">MỚI</span>
-          </div>
-          <div class="product-actions position-absolute z-2 bg-white border d-flex align-items-center justify-content-center shadow-sm">
-             <i class="fa-solid fa-cart-shopping text-dark"></i>
-          </div>
-          <div class="overflow-hidden bg-light" style="height: 220px;">
+        <div class="card border-0 h-100 product-card rounded-0 group-hover bg-white cursor-pointer position-relative">
+          
+          <div class="position-relative overflow-hidden bg-light" style="height: 250px;">
+            <!-- Badges (Top Left) -->
+            <div v-if="product.badge" class="position-absolute top-0 start-0 z-2">
+              <span class="badge bg-brand text-white fw-bold px-3 py-2 shadow-sm" style="border-bottom-right-radius: 10px; border-top-left-radius: 0; font-size: 0.85rem;">{{ product.badge }}</span>
+            </div>
+            <div v-else-if="product.isNew" class="position-absolute top-0 start-0 z-2">
+              <span class="badge bg-success text-white fw-bold px-3 py-2 shadow-sm" style="border-bottom-right-radius: 10px; border-top-left-radius: 0; font-size: 0.85rem;">MỚI</span>
+            </div>
+
+            <!-- Wishlist Button (Top Right) -->
+            <div class="position-absolute top-0 end-0 z-2 bg-brand text-white d-flex align-items-center justify-content-center wishlist-btn shadow-sm" style="width: 42px; height: 42px; border-bottom-left-radius: 10px;">
+              <i class="fa-regular fa-heart fs-5"></i>
+            </div>
+
+            <!-- Actions (Cart & Quickview - Bottom Right) -->
+            <div class="product-actions position-absolute z-2 d-flex flex-column gap-2">
+               <button class="btn bg-white text-dark shadow-sm rounded-2 d-flex align-items-center justify-content-center action-btn" style="width: 42px; height: 42px;" title="Thêm vào giỏ">
+                 <i class="fa-solid fa-bag-shopping fs-5"></i>
+               </button>
+               <button class="btn bg-white text-dark shadow-sm rounded-2 d-flex align-items-center justify-content-center action-btn" style="width: 42px; height: 42px;" title="Xem nhanh">
+                 <i class="fa-regular fa-eye fs-5"></i>
+               </button>
+            </div>
+
+            <!-- Image Placeholder -->
             <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted transition-transform img-wrapper">
-               <span class="small"></span>
+               <span class="small">[Ảnh {{ product.imageAlt }}]</span>
             </div>
           </div>
-          <div class="card-body d-flex flex-column p-3">
-            <h6 class="card-title text-truncate-2 mb-2 text-dark fw-normal hover-brand" style="font-size: 0.95rem; line-height: 1.4;">{{ product.name }}</h6>
+          
+          <!-- Info -->
+          <div class="card-body d-flex flex-column px-0 py-3">
+            <h6 class="card-title text-truncate-2 mb-2 text-dark fw-bold hover-brand" style="font-size: 0.95rem; line-height: 1.4;">{{ product.name }}</h6>
             <div class="mt-auto">
               <div class="d-flex align-items-center flex-wrap gap-2">
-                <span class="fw-bold text-brand fs-6">{{ product.price.toLocaleString('vi-VN') }}đ</span>
+                <span class="fw-bold fs-6" style="color: #e32727;">{{ product.price.toLocaleString('vi-VN') }}đ</span>
                 <span v-if="product.oldPrice" class="text-muted text-decoration-line-through small">{{ product.oldPrice.toLocaleString('vi-VN') }}đ</span>
               </div>
             </div>
@@ -365,15 +397,11 @@ export default {
 }
 .product-card:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  border-color: #e0e0e0 !important;
 }
 
 /* Icon Giỏ hàng trượt lên khi hover */
 .product-actions {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  bottom: 120px; 
+  bottom: 15px; 
   right: -50px; /* Ẩn bên ngoài card */
   opacity: 0;
   transition: all 0.3s ease;
@@ -382,10 +410,20 @@ export default {
   right: 15px; /* Trượt vào trong */
   opacity: 1;
 }
-.product-actions:hover {
-  background-color: #d84727 !important;
+.action-btn {
+  transition: all 0.2s ease;
+  border: 1px solid #eee;
 }
-.product-actions:hover i {
+.action-btn:hover {
+  background-color: #d84727 !important;
   color: white !important;
+  border-color: #d84727 !important;
+}
+.wishlist-btn {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.wishlist-btn:hover {
+  background-color: #b8361b !important;
 }
 </style>
