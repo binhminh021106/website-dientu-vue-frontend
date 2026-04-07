@@ -127,7 +127,7 @@
 
                                 <div class="text-center mt-4 pt-2 border-top">
                                     <span class="text-muted" style="font-size: 0.95rem;">Đã có tài khoản? </span>
-                                    <RouterLink to="/login" class="text-decoration-none fw-medium hover-brand"
+                                    <RouterLink :to="{ name: 'login'}" class="text-decoration-none fw-medium hover-brand"
                                         style="color: #d84727;">Đăng nhập ngay</RouterLink>
                                 </div>
 
