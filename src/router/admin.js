@@ -2,7 +2,13 @@ const adminRoutes = [
   {
     path: "/admin",
     component: () => import("../layouts/LayoutAdmin.vue"),
-    children: [],
+    children: [
+      {
+        path: "",
+        name: "dashboard",
+        component: () => import("../views/admin/Index.vue"),
+      },
+    ],
   },
 ];
 

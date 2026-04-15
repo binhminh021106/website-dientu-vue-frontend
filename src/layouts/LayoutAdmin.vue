@@ -1,46 +1,40 @@
 <template>
-  <div class="admin-layout roboto-font vh-100 vw-100 overflow-hidden d-flex bg-light">
+  <div class="admin-layout roboto-font vh-100 vw-100 overflow-hidden d-flex" style="background-color: #f4f6f9;">
     
-    <!-- Nhúng Component Sidebar bên trái -->
-    <!-- Truyền trạng thái isOpen và bắt sự kiện close từ mobile -->
-    <Sidebar :isOpen="isSidebarOpen" @close="isSidebarOpen = false" />
+    <!-- Sidebar -->
+    <AdminSidebar :isOpen="isSidebarOpen" @close="isSidebarOpen = false" />
 
-    <!-- Khu vực hiển thị bên phải -->
-    <div class="main-wrapper flex-grow-1 d-flex flex-column h-100 overflow-hidden w-100">
+    <!-- Main Wrapper -->
+    <div class="main-wrapper flex-grow-1 d-flex flex-column h-100 overflow-hidden w-100 transition-all">
       
-      <!-- Nhúng Component Header -->
-      <Header @toggle="toggleSidebar" />
+      <!-- Header -->
+      <AdminHeader @toggle="toggleSidebar" />
 
-      <!-- Nội dung chính (Thay đổi động theo URL bằng RouterView) -->
+      <!-- Nội dung thay đổi động (Dashboard, Sản phẩm...) -->
       <main class="flex-grow-1 overflow-auto p-3 p-md-4 custom-scrollbar">
         <RouterView />
       </main>
 
-      <!-- Nhúng Component Footer -->
-      <Footer />
-      
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { RouterView } from 'vue-router'
 
-// Import 3 components vừa tạo
-import Sidebar from '@/components/admin/Sidebar.vue'
-import Header from '@/components/admin/Header.vue'
-import Footer from '@/components/admin/Footer.vue'
+// Import các component con
+import AdminSidebar from '@/components/admin/Sidebar.vue'
+import AdminHeader from '@/components/admin/Header.vue'
 
-// State quản lý việc ẩn/hiện Sidebar
-// Mặc định: Mở trên PC (>991px), đóng trên Mobile/Tablet
+// State quản lý Sidebar
 const isSidebarOpen = ref(window.innerWidth > 991)
 
-// Hàm xử lý khi bấm nút Hamburger trên Header
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
 
-// Xử lý tự động đóng/mở Sidebar khi người dùng kéo giãn kích thước màn hình
+// Xử lý responsive tự động
 const handleResize = () => {
   if (window.innerWidth > 991) {
     isSidebarOpen.value = true
@@ -49,38 +43,26 @@ const handleResize = () => {
   }
 }
 
-onMounted(() => {
-  window.addEventListener('resize', handleResize)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
-})
+onMounted(() => window.addEventListener('resize', handleResize))
+onUnmounted(() => window.removeEventListener('resize', handleResize))
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-
-.roboto-font {
+<style>
+/* CSS Reset & Cấu hình cuộn chung cho Admin */
+.admin-layout {
   font-family: 'Roboto', sans-serif;
 }
-.bg-light {
-  background-color: #f4f6f9 !important;
+.transition-all {
+  transition: all 0.3s ease;
 }
 
-/* Custom Scrollbar cho Main Content */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent; 
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,0.1); 
-  border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,0,0,0.2); 
-}
+/* Scrollbar gọn gàng, tinh tế */
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.25); }
+
+/* Class màu xanh dương (Vuestic Blue) dùng chung cho Admin */
+.text-v-blue { color: #154ec1 !important; }
+.bg-v-blue { background-color: #154ec1 !important; color: white !important; }
 </style>

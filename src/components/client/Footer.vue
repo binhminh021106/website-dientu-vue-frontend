@@ -5,15 +5,15 @@
         
         <!-- Cột 1: Thông tin công ty -->
         <div class="col-lg-3 col-md-6 pe-lg-4">
-          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">THÔNG TIN CÔNG TY</h6>
+          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">{{ t.footer_company_info }}</h6>
           
           <div class="mb-3">
-            <span class="fw-bold d-block">Tên công ty</span>
-            <span class="text-light text-opacity-75">Công ty CP một thành viên TechZone</span>
+            <span class="fw-bold d-block">{{ t.footer_company_name }}</span>
+            <span class="text-light text-opacity-75">{{ t.footer_company_value }}</span>
           </div>
           <div class="mb-3">
-            <span class="fw-bold d-block">Địa chỉ</span>
-            <span class="text-light text-opacity-75">123 Đường Chính, TP. Buôn Ma Thuột, Đắk Lắk</span>
+            <span class="fw-bold d-block">{{ t.footer_address }}</span>
+            <span class="text-light text-opacity-75">{{ t.footer_address_value }}</span>
           </div>
           <div class="mb-3">
             <span class="fw-bold d-block">Email</span>
@@ -27,33 +27,33 @@
 
         <!-- Cột 2: Về chúng tôi -->
         <div class="col-lg-3 col-md-6">
-          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">VỀ CHÚNG TÔI</h6>
+          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">{{ t.footer_about_us }}</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Trang chủ</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Giới thiệu</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Sản phẩm</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Tin tức</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Liên hệ</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Câu hỏi thường gặp</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Hệ thống</a></li>
+            <li class="mb-2"><RouterLink :to="{ name: 'home' }" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_home }}</RouterLink></li>
+            <li class="mb-2"><RouterLink :to="{ name: 'about' }" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_about }}</RouterLink></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_products }}</a></li>
+            <li class="mb-2"><RouterLink to="/news" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_news }}</RouterLink></li>
+            <li class="mb-2"><RouterLink to="/contact" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_contact }}</RouterLink></li>
+            <li class="mb-2"><RouterLink to="/faq" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_faq }}</RouterLink></li>
+            <li class="mb-2"><RouterLink to="/system" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.menu_system }}</RouterLink></li>
           </ul>
         </div>
 
         <!-- Cột 3: Chính sách -->
         <div class="col-lg-3 col-md-6">
-          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">CHÍNH SÁCH</h6>
+          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">{{ t.footer_policies }}</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Hướng dẫn mua hàng</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Chính sách đổi trả</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Chính sách bán hàng</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Chính sách giao hàng</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">Bảo mật thông tin cá nhân</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.footer_guide }}</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.footer_return }}</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.footer_sales }}</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.footer_shipping }}</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none fw-bold text-light text-opacity-75 hover-brand">{{ t.footer_privacy }}</a></li>
           </ul>
         </div>
 
         <!-- Cột 4: Liên hệ & Thanh toán -->
         <div class="col-lg-3 col-md-6">
-          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">THÔNG TIN LIÊN HỆ</h6>
+          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">{{ t.footer_contact }}</h6>
           <div class="d-flex gap-2 mb-4">
             <a href="#" class="social-icon bg-primary text-white d-flex align-items-center justify-content-center rounded-circle fs-5" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="social-icon bg-info text-white d-flex align-items-center justify-content-center rounded-circle fs-5" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
@@ -62,7 +62,7 @@
             <a href="#" class="social-icon text-white d-flex align-items-center justify-content-center rounded-circle fs-5" style="width: 36px; height: 36px; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);"><i class="fa-brands fa-instagram"></i></a>
           </div>
 
-          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">PHƯƠNG THỨC THANH TOÁN</h6>
+          <h6 class="fw-bold mb-3 text-uppercase" style="letter-spacing: 0.5px;">{{ t.footer_payment }}</h6>
           <div class="d-flex flex-wrap gap-2 align-items-center">
             <!-- Icon Visa -->
             <div class="payment-icon bg-white px-2 py-1 rounded d-flex align-items-center justify-content-center" style="height: 25px;">
@@ -94,12 +94,17 @@
     </div>
     
     <div class="text-center pt-3 text-light text-opacity-75" style="font-size: 0.85rem;">
-      © Bản quyền thuộc về <span class="fw-bold">TechZone Team</span> | Cung cấp bởi <span class="fw-bold text-white">Sapo</span>
+      {{ t.footer_copyright }} <span class="fw-bold">TechZone Team</span> | {{ t.footer_provided_by }} <span class="fw-bold text-white">Sapo</span>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
+import { useI18n } from '../../composables/useI18n'
+
+// Khởi tạo thư viện đa ngôn ngữ
+const { t } = useI18n()
 </script>
 
 <style scoped>
